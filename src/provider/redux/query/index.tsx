@@ -21,6 +21,12 @@ export const fakeStoreAPISlice = createApi({
         getProducts: builder.query({
             query: () => '/products'
         }),
+        getProductsByCategory: builder.query({
+            query: ({ category, page, limit }) => ({
+                url: `/products/category/?category=${category}&page=${page}&limit=${limit}`,
+                method: "GET",
+            }),
+        }),
         loginUser: builder.mutation({
             query: (credentials) => ({
                 url: '/auth/login',
@@ -35,6 +41,9 @@ export const fakeStoreAPISlice = createApi({
                 body: cart,
             }),
         }),
+        getCategories: builder.query({
+            query: () => '/products/categories'
+        }),
         getStripe: builder.query<stripeResponse, string | string[]>({
             query: (id) => ({
                 url: "/stripe/create-payment-intent",
@@ -46,4 +55,4 @@ export const fakeStoreAPISlice = createApi({
 })
 
 
-export const { useGetProductByIdQuery, useLoginUserMutation, useAddCartMutation, useGetStripeQuery, useGetProductsQuery } = fakeStoreAPISlice
+export const { useGetProductByIdQuery, useLoginUserMutation, useAddCartMutation, useGetStripeQuery, useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery } = fakeStoreAPISlice
