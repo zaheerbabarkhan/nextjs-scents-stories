@@ -13,11 +13,11 @@ export default async function Home() {
       <div className="h-24"></div>
       <div className="max-w-[1500px] lg:w-3/4 md:w-full mx-auto flex flex-col gap-24">
         <div className="flex flex-col gap-10">
-          <ContentHeader title="summer deals" URL="/collections/summer-deals" />
+          <ContentHeader title="summer deals" URL="/collections/summer" />
           <HomePageProductsRow products={products as ProductData[]}/>
         </div>
         <div className="flex flex-col gap-10">
-          <ContentHeader title="Winter deals" URL="/collections/winter-deals" />
+          <ContentHeader title="Winter deals" URL="/collections/winter" />
           <HomePageProductsRow products={products as ProductData[]}/>
         </div>
       </div>
