@@ -18,6 +18,9 @@ export const fakeStoreAPISlice = createApi({
         getProductById: builder.query({
             query: (productId) => `/products/${productId}`
         }),
+        getOrderById: builder.query({
+            query: (paymentIntentID) => `/orders/${paymentIntentID}`
+        }),
         getProducts: builder.query({
             query: () => '/products'
         }),
@@ -26,6 +29,9 @@ export const fakeStoreAPISlice = createApi({
                 url: `/products/category/?category=${category}&page=${page}&limit=${limit}`,
                 method: "GET",
             }),
+        }),
+        getUserById: builder.query({
+            query: (userId) => `/users/${userId}`
         }),
         loginUser: builder.mutation({
             query: (credentials) => ({
@@ -50,9 +56,17 @@ export const fakeStoreAPISlice = createApi({
                 method: "GET",
                 params: { id },
             }),
-        })
+        }),
+        addUser: builder.mutation({
+            query: (userData) => ({
+                url: '/users',
+                method: 'POST',
+                body: userData,
+            }),
+        }),
+
     })
 })
 
 
-export const { useGetProductByIdQuery, useLoginUserMutation, useAddCartMutation, useGetStripeQuery, useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery } = fakeStoreAPISlice
+export const { useGetUserByIdQuery, useGetOrderByIdQuery, useGetProductByIdQuery, useLoginUserMutation, useAddCartMutation, useGetStripeQuery, useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery, useAddUserMutation } = fakeStoreAPISlice
