@@ -1,7 +1,7 @@
 import { CartI } from "@/types/cart"
 import { stripeResponse } from "@/types/stripe";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { getSession, useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 export const fakeStoreAPISlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
@@ -21,13 +21,29 @@ export const fakeStoreAPISlice = createApi({
         getOrderById: builder.query({
             query: (paymentIntentID) => `/orders/${paymentIntentID}`
         }),
+        getAllOrders: builder.query({
+            query: (page) => `/orders/?page=${page}`
+        }),
         getProducts: builder.query({
-            query: () => '/products'
+            query: (pageNumber) => {
+                let url = '/products';
+                if (pageNumber !== undefined) {
+                    url += `?page=${pageNumber}&limit=10`;
+                }
+                return url;
+            },
         }),
         getProductsByCategory: builder.query({
             query: ({ category, page, limit }) => ({
                 url: `/products/category/?category=${category}&page=${page}&limit=${limit}`,
                 method: "GET",
+            }),
+        }),
+        addProduct: builder.mutation({
+            query: (product) => ({
+                url: "/products",
+                method: "POST",
+                body: product,
             }),
         }),
         getUserById: builder.query({
@@ -69,4 +85,4 @@ export const fakeStoreAPISlice = createApi({
 })
 
 
-export const { useGetUserByIdQuery, useGetOrderByIdQuery, useGetProductByIdQuery, useLoginUserMutation, useAddCartMutation, useGetStripeQuery, useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery, useAddUserMutation } = fakeStoreAPISlice
+export const { useGetUserByIdQuery, useGetAllOrdersQuery, useGetOrderByIdQuery, useGetProductByIdQuery, useLoginUserMutation, useAddCartMutation, useGetStripeQuery, useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery, useAddUserMutation, useAddProductMutation } = fakeStoreAPISlice

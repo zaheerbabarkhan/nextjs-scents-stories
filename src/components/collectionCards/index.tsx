@@ -84,7 +84,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = ({ initialProducts, prod
     return (
         <div className='flex flex-col gap-5'>
             <div className='mt-10 flex flex-row justify-between text-lg'>
-                <div>35 products</div>
+                <div></div>
                 <div className='flex flex-row gap-2'>
                     <div>
                         <Select >
@@ -123,7 +123,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = ({ initialProducts, prod
                         next={fetchMoreProducts}
                         hasMore={hasMore}
                         loader={<h4>Loading...</h4>}
-                        endMessage={<p>All products loaded</p>}
+                        endMessage={<p className='mx-auto my-auto text-xl font-bold'>All products loaded</p>}
                         style={{ overflow: 'unset' }}
                         className={cn("", {
                             "flex flex-wrap gap-3": view === "large",
