@@ -44,7 +44,6 @@ const Checkout = () => {
                 addCart(cart)
                     .unwrap()
                     .then((result) => {
-                        console.log("result from order",result)
                         setOrderId(result.id);
                     }).catch((err) => {
                         console.log("error from order",err)

@@ -79,7 +79,6 @@ const CollectionCards: React.FC<CollectionCardsProps> = ({ initialProducts, prod
 
     const fetchMoreProducts = () => {
         setPage((prevPage) => prevPage + 1);
-        console.log('fetching more products');
     };
     return (
         <div className='flex flex-col gap-5'>

@@ -12,7 +12,6 @@ const CheckoutSuccessUserDetail: React.FC<CheckoutSuccessUserDetailProps> = ({
         skip: !userID
     })
     if (isError) {
-        console.log("this is here", JSON.stringify(error))
 
     }
     return (

@@ -25,7 +25,6 @@ const Pagintaion: React.FC<PaginationProps> = ({ currentPage, setPage, totalPage
     };
 
     useEffect(() => {
-        console.log('Current Page: ', currentPage)
     }, [totalPages])
     const prevDisabled = currentPage === 1;
     const nextDisabled = currentPage === totalPages;

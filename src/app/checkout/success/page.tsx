@@ -24,7 +24,6 @@ const SuccessPage = () => {
         content = <div>Error: Failed to get product</div>;
     }
     if (isSuccess) {
-        console.log(data)
         content = <div className='flex flex-row w-[1150px] gap-10 mx-auto mt-10'>
             <div className='w-1/2'>
                 <CheckoutSuccessUserDetail orderID={data.id} userID={data.userId}/>

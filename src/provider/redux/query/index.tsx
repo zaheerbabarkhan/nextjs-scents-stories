@@ -1,13 +1,13 @@
+import { auth } from "@/auth";
 import { CartI } from "@/types/cart"
 import { stripeResponse } from "@/types/stripe";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { getSession } from "next-auth/react";
 export const fakeStoreAPISlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.NEXT_PUBLIC_BACKEND_URL,
         prepareHeaders: async (headers) => {
-            const session = await getSession();
+            const session = await auth();
             if (session?.accessToken) {
                 headers.set("Authorization", `Bearer ${session.accessToken}`);
             }

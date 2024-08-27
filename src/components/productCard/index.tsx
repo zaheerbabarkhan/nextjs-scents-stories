@@ -25,7 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ productData, view }) => {
                             <HoverButtons product={productData} />
                             <Link href={`products/${id}`}>
                                 <CardContent className='overflow-hidden p-0 rounded-t-xl relative'>
-                                    <Image src={imageURL} alt={''} height={20} width={250} className='w-full max-h-max object-fill' />
+                                    <Image src={imageURL} alt={'product image'} height={20} width={250} className='w-full max-h-max object-fill' />
                                     {
                                         onSale && <div className='absolute bottom-0 left-0 bg-[#f90000] w-max text-white px-[5px] py-[2px] uppercase text-[13px] rounded-r-sm font-semibold'>
                                             sale

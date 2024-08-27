@@ -31,7 +31,6 @@ const CheckoutDetailForm: React.FC<CheckoutDetailFormProps> = ({ setDetailSubmit
             const response = await addUser(data).unwrap();
             setUserId(response.id);
             setDetailSubmitted(true);
-            console.log('User added/updated:', response);
         } catch (error) {
             console.error('Failed to add/update user:', error);
         }

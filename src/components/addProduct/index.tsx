@@ -35,7 +35,6 @@ const AddProduct = () => {
         useAddProductMutation();
 
     const onSubmit = async (data: any) => {
-        console.log(data)
         addProductMutation(data)
             .unwrap()
             .then((res) => {

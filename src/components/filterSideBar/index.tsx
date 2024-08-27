@@ -29,7 +29,6 @@ const FilterSideBar: React.FC<FilterSideBarProps> = ({ changeCategory }) => {
                     <Separator />
                     <RadioGroup
                         onValueChange={(value) => {
-                            console.log(value, "value is")
                             changeCategory(value)
                         }}
                         name={category.categoryGenre}>
