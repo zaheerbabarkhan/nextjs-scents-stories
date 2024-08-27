@@ -18,7 +18,7 @@ const CollectionPage = async ({ params: { collectionName } }: {
                 <Separator className='m-0 mt-16' />
 
                 <div>
-                    <CollectionCards initialProducts={products} />
+                    <CollectionCards initialProducts={[]} productCategory={collectionName} />
                 </div>
             </main>
         </div>

@@ -43,7 +43,6 @@ export const authConfig = {
         return true;
       }
       if (!isAuthenticated && PROTECTED_ROUTES.includes(nextUrl.pathname)) {
-        console.log(new URL("/user/login", nextUrl.origin))
         return Response.redirect(new URL("/user/login", nextUrl));
       }
       return isAuthenticated;

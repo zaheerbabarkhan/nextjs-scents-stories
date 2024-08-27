@@ -1,6 +1,8 @@
 "use server";
+import { auth } from "@/auth";
 import { ProductData } from "@/components/homePageProductRow";
 import axios from "axios";
+import { Session } from "next-auth";
 
 const URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 export async function fetchProducts() {
@@ -83,7 +85,47 @@ export async function fetchUserData(email: string, password: string) {
       return null;
     }
   } catch (error) {
-    console.log("this is error here",(error as any).message);
+    console.log("this is error here", (error as any).message);
+    return null;
+  }
+}
+
+export async function fetchDashBoardStats() {
+  try {
+    const session = await auth();
+    const response = await axios.get(`${URL}/stats`, {
+      headers: {
+        Authorization: `Bearer ${(session as unknown as Session).accessToken}`,
+      },
+    });
+
+    if (response.data) {
+      return response.data;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log("this is error here", (error as any).message);
+    return null;
+  }
+}
+
+export async function fetchDashBoardOrders() {
+  try {
+    const session = await auth();
+    const response = await axios.get(`${URL}/orders`, {
+      headers: {
+        Authorization: `Bearer ${(session as unknown as Session).accessToken}`,
+      },
+    });
+
+    if (response.data) {
+      return response.data;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log("this is error here", (error as any).message);
     return null;
   }
 }
