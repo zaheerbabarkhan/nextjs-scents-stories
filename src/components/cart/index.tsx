@@ -6,23 +6,23 @@ import CartItem from './cartItem'
 import { Separator } from '../ui/separator'
 import { Button } from '../ui/button'
 import Link from 'next/link'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/lib/store'
 
-interface CartProps {
-    cartItems: CartItemI[]
-    totalPrice: number
-}
-const Cart: React.FC<CartProps> = ({ cartItems, totalPrice }) => {
+const Cart = () => {
+
+    const cart = useSelector((state: RootState) => state.cart)
 
     return (
         <div>
             <Card className='border-none shadow-none p-0'>
                 <CardContent className='border-none p-5'>
                     {
-                        cartItems.map((cartItem, index) => {
+                        cart.products.map((cartItem, index) => {
                             return <div className='flex w-full flex-col' key={cartItem.productId}>
                                 <CartItem key={cartItem.productId} productId={cartItem.productId} quantity={cartItem.quantity} />
                                 {
-                                    index + 1 != cartItems.length && <div className='w-full'>
+                                    index + 1 != cart.products.length && <div className='w-full'>
                                         <Separator />
                                     </div>
                                 }
@@ -38,7 +38,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, totalPrice }) => {
                         </div>
                         <div className='flex justify-between w-full text-base font-bold p-3'>
                             <div>Subtotal</div>
-                            <div>{totalPrice}</div>
+                            <div>{cart.totalPrice}</div>
                         </div>
                         <div className='p-2 px-4'>
                             <Link href={"/checkout"}>

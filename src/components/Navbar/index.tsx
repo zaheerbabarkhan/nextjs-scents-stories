@@ -60,7 +60,7 @@ const Navbar = () => {
                             onAnimationEnd={handleAnimationEnd}
                         >
                             {
-                                cart.products.length === 0 ? <div className='p-5'>Your cart is currently empty.</div> : <Cart cartItems={cart.products} totalPrice={cart.totalPrice} />
+                                cart.products.length === 0 ? <div className='p-5'>Your cart is currently empty.</div> : <Cart />
                             }
                         </div>
                     )}

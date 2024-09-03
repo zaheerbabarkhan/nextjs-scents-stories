@@ -41,11 +41,12 @@ describe('SingleProductDetails Integration Test', () => {
 
         // Render Cart component to check if product is in cart
         renderWithProviders(
-            <Cart cartItems={[{ productId: '1', quantity: 1 }]} totalPrice={80} />, {
+            <Cart />, {
             store: mockStore
         }
         );
 
+        expect(screen.getByText('Test Product')).toBeInTheDocument();
         // // Check if the cart displays the added product
         expect(screen.getByText("Taxes included. Shipping and discount codes calculated at checkout.")).toBeInTheDocument();
         // expect(screen.getByText(/Rs. 80/i)).toBeInTheDocument();
